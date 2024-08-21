@@ -5,6 +5,10 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+/**
+ * Dto class for authentication request.
+ * @author Alexander Litovkin
+ */
 @Data
 @Builder
 @NoArgsConstructor

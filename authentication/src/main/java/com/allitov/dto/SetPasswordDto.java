@@ -5,6 +5,10 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+/**
+ * Dto class for setting password after recovery request.
+ * @author Alexander Litovkin
+ */
 @Data
 @Builder
 @NoArgsConstructor
