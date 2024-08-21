@@ -1,0 +1,165 @@
+openapi: 3.0.1
+info:
+  title: OpenAPI definition
+  version: v0
+servers:
+  - url: http://localhost:8081
+    description: Generated server url
+paths:
+  /api/v1/auth/register:
+    post:
+      tags:
+        - registration-resource-impl
+      summary: Метод для регистрации нового пользователя.
+      operationId: registrationUser
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RegistrationDto_Public'
+        required: true
+      responses:
+        '200':
+          description: Успешный операция
+          content:
+            application/json: {}
+        '400':
+          description: Неверный запрос
+          content:
+            application/json: {}
+        '500':
+          description: Что-то пошло не так
+          content:
+            application/json: {}
+  /api/v1/auth/password/recovery:
+    post:
+      tags:
+        - authentication-resource-impl
+      summary: Метод для отправки емэйла пользователю для восстановления пароля через емэйл
+      operationId: passwordRecovery
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RecoveryPasswordLinkRq'
+        required: true
+      responses:
+        '200':
+          description: OK
+  /api/v1/auth/password/recovery/{recoveryLink}:
+    post:
+      tags:
+        - authentication-resource-impl
+      summary: Метод для отправки емэйла пользователю для восстановления пароля через емэйл
+      operationId: passwordSet
+      parameters:
+        - name: recoveryLink
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SetPasswordRq'
+      responses:
+        '200':
+          description: OK
+  /api/v1/auth/login:
+    post:
+      tags:
+        - authentication-resource-impl
+      summary: Метод для входа пользователя используя email/password
+      operationId: login
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AuthenticateRq'
+        required: true
+      responses:
+        '200':
+          description: Успешный вход (возвращаются поля timestamp и data)
+          content:
+            application/json: {}
+        '400':
+          description: Неверный запрос (возвращаются поля error и error_description)
+          content:
+            application/json: {}
+        '500':
+          description: Что-то пошло не так
+          content:
+            application/json: {}
+  /api/v1/auth/captcha:
+    get:
+      tags:
+        - captcha-actions-resource-impl
+      summary: Метод для генерации каптчи
+      operationId: generateCaptcha
+      responses:
+        '200':
+          description: Успешная генерация
+          content:
+            application/json: {}
+        '500':
+          description: Что-то пошло не так
+          content:
+            application/json: {}
+components:
+  schemas:
+    RegistrationDto_Public:
+      required:
+        - code
+        - email
+        - firstName
+        - lastName
+        - password1
+        - password2
+        - token
+      type: object
+      properties:
+        email:
+          type: string
+        password1:
+          type: string
+        password2:
+          type: string
+        firstName:
+          type: string
+        lastName:
+          type: string
+        code:
+          type: string
+        token:
+          type: string
+    RecoveryPasswordLinkRq:
+      required:
+        - email
+        - temp
+      type: object
+      properties:
+        temp:
+          type: string
+        email:
+          type: string
+    SetPasswordRq:
+      required:
+        - password
+        - temp
+      type: object
+      properties:
+        temp:
+          type: string
+        password:
+          type: string
+    AuthenticateRq:
+      required:
+        - email
+        - password
+      type: object
+      properties:
+        email:
+          type: string
+        password:
+          type: string
