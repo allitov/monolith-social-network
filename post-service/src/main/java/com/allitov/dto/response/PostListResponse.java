@@ -5,6 +5,10 @@ import lombok.Data;
 
 import java.util.List;
 
+/**
+ * Dto class for post list response.
+ * @author Alexander Litovkin
+ */
 @Data
 @Builder
 public class PostListResponse {

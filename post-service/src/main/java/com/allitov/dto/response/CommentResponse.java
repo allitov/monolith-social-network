@@ -6,6 +6,10 @@ import lombok.Data;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
+/**
+ * Dto class for comment response.
+ * @author Alexander Litovkin
+ */
 @Data
 @Builder
 public class CommentResponse {
