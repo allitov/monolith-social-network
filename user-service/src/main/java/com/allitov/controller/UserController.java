@@ -17,7 +17,7 @@ import java.util.UUID;
 @Slf4j
 @RestController
 @RequestMapping("/api/v1/account")
-public class UserController {
+public final class UserController {
 
     /**
      * Endpoint for obtaining all data about accounts.
