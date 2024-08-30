@@ -5,6 +5,10 @@ import lombok.Data;
 
 import java.util.UUID;
 
+/**
+ * Dto class for account response.
+ * @author Alexander Litovkin
+ */
 @Data
 @Builder
 public class AccountResponse {
