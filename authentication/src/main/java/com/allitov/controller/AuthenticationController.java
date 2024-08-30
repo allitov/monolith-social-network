@@ -24,7 +24,7 @@ public final class AuthenticationController {
      */
     @PostMapping("/register")
     public ResponseEntity<Void> register(@RequestBody RegistrationRequest requestBody) {
-        log.info("Registration request");
+        log.info("Registration request with body = {}", requestBody);
 
         return ResponseEntity.ok().build();
     }
@@ -36,7 +36,7 @@ public final class AuthenticationController {
      */
     @PostMapping("/password/recovery")
     public ResponseEntity<Void> generateRecoveryLink(@RequestBody RecoveryPasswordLinkRequest requestBody) {
-        log.info("Generate recovery link request");
+        log.info("Generate recovery link request with body = {}", requestBody);
 
         return ResponseEntity.ok().build();
     }
@@ -50,7 +50,7 @@ public final class AuthenticationController {
     @PostMapping("/password/recovery/{recoveryLink}")
     public ResponseEntity<Void> setPassword(@PathVariable("recoveryLink") String recoveryLink,
                                             @RequestBody SetPasswordRequest requestBody) {
-        log.info("Set password request");
+        log.info("Set password request with link = {} and body = {}", recoveryLink, requestBody);
 
         return ResponseEntity.ok().build();
     }
@@ -62,7 +62,7 @@ public final class AuthenticationController {
      */
     @PostMapping("/login")
     public ResponseEntity<Void> login(@RequestBody AuthenticationRequest requestBody) {
-        log.info("Login request");
+        log.info("Login request with body = {}", requestBody);
 
         return ResponseEntity.ok().build();
     }
