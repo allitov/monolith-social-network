@@ -1,9 +1,9 @@
 package com.allitov.controller;
 
-import com.allitov.dto.AuthenticateDto;
-import com.allitov.dto.RecoveryPasswordLinkDto;
-import com.allitov.dto.RegistrationDto;
-import com.allitov.dto.SetPasswordDto;
+import com.allitov.dto.request.AuthenticationRequest;
+import com.allitov.dto.request.RecoveryPasswordLinkRequest;
+import com.allitov.dto.request.RegistrationRequest;
+import com.allitov.dto.request.SetPasswordRequest;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -23,7 +23,7 @@ public final class AuthenticationController {
      * @return an HTTP response.
      */
     @PostMapping("/register")
-    public ResponseEntity<Void> register(@RequestBody RegistrationDto requestBody) {
+    public ResponseEntity<Void> register(@RequestBody RegistrationRequest requestBody) {
         log.info("Registration request");
 
         return ResponseEntity.ok().build();
@@ -35,7 +35,7 @@ public final class AuthenticationController {
      * @return an HTTP response.
      */
     @PostMapping("/password/recovery")
-    public ResponseEntity<Void> generateRecoveryLink(@RequestBody RecoveryPasswordLinkDto requestBody) {
+    public ResponseEntity<Void> generateRecoveryLink(@RequestBody RecoveryPasswordLinkRequest requestBody) {
         log.info("Generate recovery link request");
 
         return ResponseEntity.ok().build();
@@ -49,7 +49,7 @@ public final class AuthenticationController {
      */
     @PostMapping("/password/recovery/{recoveryLink}")
     public ResponseEntity<Void> setPassword(@PathVariable("recoveryLink") String recoveryLink,
-                                            @RequestBody SetPasswordDto requestBody) {
+                                            @RequestBody SetPasswordRequest requestBody) {
         log.info("Set password request");
 
         return ResponseEntity.ok().build();
@@ -61,7 +61,7 @@ public final class AuthenticationController {
      * @return an HTTP response.
      */
     @PostMapping("/login")
-    public ResponseEntity<Void> login(@RequestBody AuthenticateDto requestBody) {
+    public ResponseEntity<Void> login(@RequestBody AuthenticationRequest requestBody) {
         log.info("Login request");
 
         return ResponseEntity.ok().build();

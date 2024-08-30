@@ -1,9 +1,7 @@
-package com.allitov.dto;
+package com.allitov.dto.request;
 
-import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 /**
  * Dto class for registration request.
@@ -11,9 +9,7 @@ import lombok.NoArgsConstructor;
  */
 @Data
 @Builder
-@NoArgsConstructor
-@AllArgsConstructor
-public class RegistrationDto {
+public class RegistrationRequest {
 
     private String email;
 

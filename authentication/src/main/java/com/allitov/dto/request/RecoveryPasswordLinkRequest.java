@@ -1,9 +1,7 @@
-package com.allitov.dto;
+package com.allitov.dto.request;
 
-import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 /**
  * Dto class for recovery password link request.
@@ -11,9 +9,7 @@ import lombok.NoArgsConstructor;
  */
 @Data
 @Builder
-@NoArgsConstructor
-@AllArgsConstructor
-public class RecoveryPasswordLinkDto {
+public class RecoveryPasswordLinkRequest {
 
     private String temp;
 
